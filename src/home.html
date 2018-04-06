@@ -1,0 +1,59 @@
+<template>
+    <div class="card">
+        <h5 class="card-header">
+            Search
+        </h5>
+        <div class="card-body">
+            <form role="form">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="First name" class="form-control" value.bind="firstName">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="Last name" class="form-control" value.bind="lastName">
+                    </div>
+                </div>
+            </form>
+            <div>
+                <button class="btn btn-success float-right" click.delegate="search()" disabled.bind="!canSearch">Search</button>
+                <button class="btn btn-light float-right" click.delegate="clear()" style="margin-right: 5px;">Clear</button>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="margin-top: 10px;" if.bind="patients">
+        <h6 class="card-header">
+            Search results
+        </h6>
+        <div class="card-body">
+            <div if.bind="!patients">
+                <p class="text-center">No search results.</p>
+            </div>
+            <div if.bind="patients">
+                <table class="table table-hover">
+                    <thead>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr repeat.for="patient of patients">
+                            <td>${patient.id}</td>
+                            <td>${patient.firstName}</td>
+                            <td>${patient.lastName}</td>
+                            <td>
+                                <button class="btn btn-light float-right" 
+                                        style="margin-right: 5px;">
+                                        <a route-href="route: patient; params.bind: {id:patient.id}">Open record</a></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
