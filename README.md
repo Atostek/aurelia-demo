@@ -1,8 +1,9 @@
 # aurelia-demo
 
-## Installation
-### Prerequisites
+## Prerequirements
 - NPM (NodeJS Package Manager) installed
+
+## Installation
 ### Install aurelia-cli
 
 ```bash
